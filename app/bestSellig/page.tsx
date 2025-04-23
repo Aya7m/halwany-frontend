@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from 'react'
 import { useProductStore } from '../store/useProductStore'
 import toast from 'react-hot-toast'
