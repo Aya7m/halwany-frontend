@@ -37,8 +37,13 @@ const Page = () => {
 
       toast.success("تم إرسال كود التحقق إلى البريد الإلكتروني");
       window.location.href = "/sendOtp";
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Something went wrong");
+      }
+      console.error(err);
     } finally {
       setLoading(false);
     }
