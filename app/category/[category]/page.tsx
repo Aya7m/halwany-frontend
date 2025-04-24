@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import { useProductStore } from "@/app/store/useProductStore";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import LoadingSpinner from "@/app/loadingSpinner/page";
+import LoadingSpinner from "@/app/components/LoadingSpinner";
+
 
 const CategoryPage = () => {
   const { category } = useParams() as { category: string };
@@ -25,7 +26,7 @@ const CategoryPage = () => {
       <h1 className="text-4xl text-center capitalize">{category}</h1>
       <div className="w-full h-full flex justify-center items-center">
         {loading ? (
-          <LoadingSpinner />
+          <LoadingSpinner/>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center">
             {productCategory?.map((product) => (

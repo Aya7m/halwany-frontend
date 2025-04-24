@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect } from 'react'
 import { useProductStore } from '../store/useProductStore'
-import LoadingSpinner from '../loadingSpinner/page'
+import LoadingSpinner from '../components/LoadingSpinner'
+
 
 const ProductPage = () => {
 

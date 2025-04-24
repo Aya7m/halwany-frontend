@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react'
 import { useProductStore } from '../store/useProductStore'
 import Link from 'next/link'
-import LoadingSpinner from '../loadingSpinner/page'
+import LoadingSpinner from '../components/LoadingSpinner'
+
 
 const RecomendedPage = () => {
     const { recommendesProducts, products,addToCart,loading } = useProductStore()
