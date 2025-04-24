@@ -1,73 +1,34 @@
 
-// // app/product/[id]/page.tsx
-// import axios from "axios";
-// import AddToCartButton from "./AddToCartButton";
+// app/product/[id]/page.tsx
+import axios from "axios";
+import AddToCartButton from "./AddToCartButton";
+import Image from "next/image";
 
-// interface Product {
-//   _id: string;
-//   name: string;
-//   description: string;
-//   price: number;
-//   image: string;
-//   category: string;
-// }
-
-// interface PageProps  {
-//   params: {
-//     id: string;
-//   };
-// }
-
-// const ProductDetailsPage = async ({ params }: PageProps ) => {
-//   const response = await axios.get<Product>(
-//     `https://halwany-backend-production.up.railway.app/product/${params.id}`
-//   );
-
-//   const product = response.data;
-
-//   return (
-//     <div className="max-w-2xl mx-auto mt-12">
-//       <img
-//         src={product.image}
-//         alt={product.name}
-//         className="w-full h-80 object-cover rounded-lg mb-4"
-//       />
-//       <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-//       <p className="text-lg text-gray-700 mb-4">{product.description}</p>
-//       <p className="text-2xl font-semibold text-green-600">${product.price}</p>
-//       <div className="flex w-full items-center justify-center">
-//         <AddToCartButton productId={product._id}/>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductDetailsPage;
-
-
-
-import { Product } from '@/types'; // تأكد أن لديك النوع المناسب
-import AddToCartButton from './AddToCartButton';
-
-interface PageProps {
-  product: Product;
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
 }
 
-const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
-  const res = await fetch(
-    `https://halwany-backend-production.up.railway.app/product/${params.id}`,
-    { cache: 'no-store' }
+interface PageProps  {
+  params: {
+    id: string;
+  };
+}
+
+const ProductDetailsPage = async ({ params }: PageProps ) => {
+  const response = await axios.get<Product>(
+    `https://halwany-backend-production.up.railway.app/product/${params.id}`
   );
 
-  if (!res.ok) {
-    return { notFound: true };
-  }
-
-  const product: Product = await res.json();
+  const product = response.data;
 
   return (
     <div className="max-w-2xl mx-auto mt-12">
-      <img
+      <Image
         src={product.image}
         alt={product.name}
         className="w-full h-80 object-cover rounded-lg mb-4"
@@ -76,12 +37,16 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
       <p className="text-lg text-gray-700 mb-4">{product.description}</p>
       <p className="text-2xl font-semibold text-green-600">${product.price}</p>
       <div className="flex w-full items-center justify-center">
-        <AddToCartButton productId={product._id} />
+        <AddToCartButton productId={product._id}/>
       </div>
     </div>
   );
 };
 
 export default ProductDetailsPage;
+
+
+
+
 
 
