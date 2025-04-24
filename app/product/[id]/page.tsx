@@ -45,7 +45,8 @@
 // export default ProductDetailsPage;
 
 
-// app/product/[id]/page.tsx
+
+import { GetServerSideProps } from 'next';
 import AddToCartButton from "./AddToCartButton";
 
 interface Product {
@@ -58,23 +59,31 @@ interface Product {
 }
 
 interface PageProps {
-  params: {
-    id: string;
-  };
+  product: Product;
 }
 
-const ProductDetailsPage = async ({ params }: PageProps) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await fetch(
-    `https://halwany-backend-production.up.railway.app/product/${params.id}`,
+    `https://halwany-backend-production.up.railway.app/product/${params?.id}`,
     { cache: "no-store" }
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch product");
+    return {
+      notFound: true,
+    };
   }
 
   const product: Product = await res.json();
 
+  return {
+    props: {
+      product,
+    },
+  };
+};
+
+const ProductDetailsPage = ({ product }: PageProps) => {
   return (
     <div className="max-w-2xl mx-auto mt-12">
       <img
