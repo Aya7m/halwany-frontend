@@ -3,6 +3,7 @@
 
 import ReviewForm from "@/app/components/ReviewForm";
 import ReviewsSection from "@/app/components/ReviewsSection ";
+
 import RecomendedPage from "@/app/recomended/page";
 
 import { useProductStore } from "@/app/store/useProductStore";
@@ -30,7 +31,7 @@ const AddToCartButton = ({ productId }: Props) => {
     <div className="flex flex-col my-5">
       <div>
         <button
-          type="submit"
+        
           onClick={handleAddToCart}
           className="navbar text-black py-2 px-6 my-3 rounded-3xl"
         >
