@@ -12,13 +12,13 @@ interface Product {
   category: string;
 }
 
-interface Props {
+interface PageProps  {
   params: {
     id: string;
   };
 }
 
-const ProductDetailsPage = async ({ params }: Props) => {
+const ProductDetailsPage = async ({ params }: PageProps ) => {
   const response = await axios.get<Product>(
     `https://halwany-backend-production.up.railway.app/product/${params.id}`
   );
@@ -36,7 +36,7 @@ const ProductDetailsPage = async ({ params }: Props) => {
       <p className="text-lg text-gray-700 mb-4">{product.description}</p>
       <p className="text-2xl font-semibold text-green-600">${product.price}</p>
       <div className="flex w-full items-center justify-center">
-        <AddToCartButton productId={product._id} className="w-full" />
+        <AddToCartButton productId={product._id}/>
       </div>
     </div>
   );
