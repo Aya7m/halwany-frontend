@@ -46,44 +46,25 @@
 
 
 
-import { GetServerSideProps } from 'next';
-import AddToCartButton from "./AddToCartButton";
-
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-}
+import { Product } from '@/types'; // تأكد أن لديك النوع المناسب
+import AddToCartButton from './AddToCartButton';
 
 interface PageProps {
   product: Product;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(
-    `https://halwany-backend-production.up.railway.app/product/${params?.id}`,
-    { cache: "no-store" }
+    `https://halwany-backend-production.up.railway.app/product/${params.id}`,
+    { cache: 'no-store' }
   );
 
   if (!res.ok) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
   const product: Product = await res.json();
 
-  return {
-    props: {
-      product,
-    },
-  };
-};
-
-const ProductDetailsPage = ({ product }: PageProps) => {
   return (
     <div className="max-w-2xl mx-auto mt-12">
       <img
@@ -102,4 +83,5 @@ const ProductDetailsPage = ({ product }: PageProps) => {
 };
 
 export default ProductDetailsPage;
+
 
