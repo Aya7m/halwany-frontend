@@ -57,19 +57,19 @@ interface Product {
   category: string;
 }
 
-interface PageProps  {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-const ProductDetailsPage = async ({ params }: PageProps ) => {
-  const res = await fetch(`https://halwany-backend-production.up.railway.app/product/${params.id}`, {
-    cache: "no-store"
-  });
+const ProductDetailsPage = async ({ params }: PageProps) => {
+  const res = await fetch(
+    `https://halwany-backend-production.up.railway.app/product/${params.id}`,
+    { cache: "no-store" }
+  );
 
   if (!res.ok) {
-    // ممكن كمان ترجعي NotFound component
     throw new Error("Failed to fetch product");
   }
 
@@ -93,3 +93,4 @@ const ProductDetailsPage = async ({ params }: PageProps ) => {
 };
 
 export default ProductDetailsPage;
+
