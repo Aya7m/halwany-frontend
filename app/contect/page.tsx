@@ -23,7 +23,7 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("https://halwany-backend-production.up.railway.app/auth/contact", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

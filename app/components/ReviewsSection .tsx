@@ -16,7 +16,7 @@ const ReviewsSection = ({ productId }: { productId: string }) => {
     const fetchReviews = async () => {
       try {
         const res = await fetch(
-          `https://halwany-backend-production.up.railway.app/review/get/${productId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/review/get/${productId}`
         );
         const data = await res.json();
         setReviews(data);

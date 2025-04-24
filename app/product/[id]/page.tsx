@@ -69,7 +69,7 @@ interface Product {
 // هذه الدالة بتقوم بتحميل البيانات الخاصة بالـ params
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const response = await axios.get<Product>(
-    `https://halwany-backend-production.up.railway.app/product/${params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/product/${params.id}`
   );
   const product = response.data;
 
@@ -82,13 +82,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
   try {
     const response = await axios.get<Product>(
-      `https://halwany-backend-production.up.railway.app/product/${params.id}`
+      `${process.env.NEXT_PUBLIC_API_URL}/product/${params.id}`
     );
     const product = response.data;
 
     return (
       <div className="max-w-2xl mx-auto mt-12">
-        <Image
+        <img
           src={product.image}
           alt={product.name}
           width={500}

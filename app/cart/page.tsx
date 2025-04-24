@@ -70,7 +70,7 @@ const CartPage = () => {
 
     const stripe = await stripePromise;
     const response = await fetch(
-      "https://halwany-backend-production.up.railway.app/payment/create-checkout-session",
+      `${process.env.NEXT_PUBLIC_API_URL}/payment/create-checkout-session`,
       {
         method: "POST",
         headers: {

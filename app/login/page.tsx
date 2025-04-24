@@ -16,7 +16,7 @@ const Page = () => {
     setError("");
 
     try {
-      const response = await fetch("https://halwany-backend-production.up.railway.app/auth/send", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

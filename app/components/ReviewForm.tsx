@@ -21,7 +21,7 @@ const ReviewForm = ({ productId }: ReviewFormProps) => {
   
     try {
       setLoading(true);
-      const response = await fetch(`https://halwany-backend-production.up.railway.app/review/create/${productId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/review/create/${productId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

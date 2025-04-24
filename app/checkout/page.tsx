@@ -24,7 +24,7 @@ const PurchaseSuccessPage = () => {
     useEffect(() => {
         const handleCheckoutSuccess = async (sessionId: string) => {
             try {
-                const res = await fetch("https://halwany-backend-production.up.railway.app/payment/checkout-success", {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/payment/checkout-success`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ sessionId }),

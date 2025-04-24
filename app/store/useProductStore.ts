@@ -100,7 +100,7 @@ export const useProductStore = create<ProductStore>((set) => ({
             console.log("🔐 Token Sent:", user?.token);
 
             const res = await axios.post<Product>(
-                "https://halwany-backend-production.up.railway.app/product/create",
+               ` ${process.env.NEXT_PUBLIC_API_URL}/product/create`,
                 productData,
                 {
                     headers: {
@@ -140,7 +140,7 @@ export const useProductStore = create<ProductStore>((set) => ({
             return;
         }
         try {
-            const response = await axios.get<Product[]>("https://halwany-backend-production.up.railway.app/product/all", {
+            const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/product/all`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
@@ -173,7 +173,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         }
         set({ loading: true });
         try {
-            await axios.delete(`https://halwany-backend-production.up.railway.app/product/${productId}`, {
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/product/${productId}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
@@ -202,7 +202,7 @@ export const useProductStore = create<ProductStore>((set) => ({
 
         set({ loading: true });
         try {
-            const response = await axios.put(`https://halwany-backend-production.up.railway.app/product/${productId}`, {
+            const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/product/${productId}`, {
                 isFeatured: true,
             }, {
                 headers: {
@@ -228,7 +228,7 @@ export const useProductStore = create<ProductStore>((set) => ({
     fetchBestSellers: async () => {
         set({ loading: true });
         try {
-            const response = await axios.get<Product[]>("https://halwany-backend-production.up.railway.app/product/best-selling", {
+            const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/product/best-selling`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
@@ -246,7 +246,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
 
         try {
-            const response = await axios.get<Product[]>(`https://halwany-backend-production.up.railway.app/product/category/${category}`, {
+            const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/product/category/${category}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
@@ -278,7 +278,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             const response = await axios.post<Product>(
-                `https://halwany-backend-production.up.railway.app/cart/${productId}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cart/${productId}`,
                 {},
                 {
                     headers: {
@@ -312,7 +312,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             const response = await axios.get<Product[]>(
-                `https://halwany-backend-production.up.railway.app/cart`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cart`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -340,7 +340,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             const response = await axios.put<Product>(
-                `https://halwany-backend-production.up.railway.app/cart/${productId}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cart/${productId}`,
                 { quantity },
                 {
                     headers: {
@@ -379,7 +379,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             await axios.delete<Product>(
-                `https://halwany-backend-production.up.railway.app/cart/${productId}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cart/${productId}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -417,7 +417,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             await axios.delete(
-                `https://halwany-backend-production.up.railway.app/cart/delete`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cart/delete`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -441,7 +441,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             const response = await axios.get<Product[]>(
-                `https://halwany-backend-production.up.railway.app/product/get`,
+                `${process.env.NEXT_PUBLIC_API_URL}/product/get`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -463,7 +463,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         set({ loading: true });
         try {
             const response = await axios.get<Product[]>(
-                `https://halwany-backend-production.up.railway.app/product/recommended`,
+                `${process.env.NEXT_PUBLIC_API_URL}/product/recommended`,
                 {
                     headers: {
                         "Content-Type": "application/json",

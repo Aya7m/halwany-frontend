@@ -24,7 +24,7 @@ const SendOtp = () => {
     setError("");
 
     try {
-      const response = await fetch("https://halwany-backend-production.up.railway.app/auth/verify-otp", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/verify-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
