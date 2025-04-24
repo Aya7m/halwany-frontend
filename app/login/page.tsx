@@ -10,7 +10,7 @@ const Page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -37,7 +37,7 @@ const Page = () => {
 
       toast.success("تم إرسال كود التحقق إلى البريد الإلكتروني");
       window.location.href = "/sendOtp";
-    } catch (err: unknown) {
+    } catch (err: any) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
@@ -55,7 +55,7 @@ const Page = () => {
         <h1 className="text-3xl font-bold text-center">Halwany</h1>
         <form className="my-10" onSubmit={handleSubmit}>
           <h1 className="my-5">Login</h1>
-          <p>Enter your email and we'll send you a login code</p>
+          <p>Enter your email and w&apos;ill send you a login code</p>
           <input
             type="email"
             className="border border-black p-2 input input-bordered w-full max-w-xs"
